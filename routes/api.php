@@ -17,4 +17,5 @@ Route::post('/edit-user',[AuthController::class,'editUser']);
 //project Routes 
 Route::post("/create-project",[ProjectController::class,'createProject']);
 Route::post('/edit-project',[ProjectController::class,'editProject']);
+Route::get('/get-projects',[ProjectController::class, 'getAllProjects']);
 

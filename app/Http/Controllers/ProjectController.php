@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
-  public function createProject(Request $request) 
-  {
-     $validator = Validator::make($request->all(), [
+    public function createProject(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3|max:255',
         ]);
 
@@ -19,14 +19,15 @@ class ProjectController extends Controller
         }
         $project = new Project();
         $project->name = $request->name;
-        $project->user_id=$request->user_id;
-        $project->description=$request->description;
-        $project->status=$request->status;
+        $project->user_id = $request->user_id;
+        $project->description = $request->description;
+        $project->status = $request->status;
         $project->save();
         return response()->json(['message' => "Project Created successfully"], 200);
     }
-    public function editProject(Request $request){
- $validator = Validator::make($request->all(), [
+    public function editProject(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3|max:255',
         ]);
 
@@ -38,5 +39,8 @@ class ProjectController extends Controller
         $project->save();
         return response()->json(['message' => "Project data updated successfully"], 200);
     }
-  }
-
+    public function getAllProjects(){
+        $projects = Project::get();
+        return response()->json(['projects'=>$projects]);
+    }
+}
