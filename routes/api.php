@@ -24,8 +24,10 @@ Route::delete('/delete-project',[ProjectController::class,'deleteProject']);
 
 //bugs routes 
 Route::post("/register-bug",[BugsController::class,'createBug']);
-Route::post("/edit-bug/{id}",[BugsController::class,'editBug']);
+Route::put("/edit-bug/{id}",[BugsController::class,'editBug']);
 Route::post("/get-bug",[BugsController::class,'getBug']);
 Route::get("/get-all-bugs/{id}",[BugsController::class,'getAllBugs']);
+Route::post('/submit-bug/{id}', [BugsController::class,'submitBug']);
+Route::get('/reject-bug/{id}', [BugsController::class,'rejectBug']);
 
 

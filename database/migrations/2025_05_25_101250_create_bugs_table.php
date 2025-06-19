@@ -24,6 +24,9 @@ return new class extends Migration
             $table->foreign('project_id')->references('id')->on('projects');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->longText('new_code')->nullable();
+            $table->unsignedBigInteger('submitted_by')->nullable();
+            $table->foreign('submitted_by')->references('id')->on('users');
         });
     }
 
